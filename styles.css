@@ -48,10 +48,6 @@
       background-position: center;
     }
 
-    .icon {
-      font-size: 3em;
-    }
-
     .subtitle, .author {
       font-size: 1.2em;
       margin: 5px 0;
@@ -101,11 +97,6 @@
     #content {
       display: block;
     }
-
-/*меняем вид гугл переводчика*/
-
-
-
 
     .menu-icon {
       font-size: 2em;
@@ -217,7 +208,7 @@ ul li {
     }
 
     .social-icon {
-      font-size: 30px;
+      font-size: 40px;
       color: #2c3e50;
       text-decoration: none;
       transition: color 0.3s;
