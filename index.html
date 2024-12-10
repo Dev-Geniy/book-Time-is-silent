@@ -1,0 +1,137 @@
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Когда время молчит</title>
+  
+<!-- Ссылка на манифест -->
+  <link rel="manifest" href="manifest.json">
+
+<!-- Подключаем скрипт для перевода -->
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'ru',        // Исходный язык страницы
+        includedLanguages: 'ru,en,uk', // Языки для выбора
+        layout: google.translate.TranslateElement.InlineLayout.SIMPLE, // Стандартный стиль
+        autoDisplay: false // Без автоматического отображения
+      }, 'google_translate_element');
+    }
+  </script>
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="header">
+  <div class="theme-language-wrapper">
+    <button class="theme-switcher" id="themeSwitcher" title="Переключить тему">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="theme-switcher" href="javascript:void(0)" onclick="showPwaInstructions()">
+      <i class="fas fa-info-circle"></i>
+    </button>
+  </div>
+  
+  <h1 class="book-title">Название Книги</h1>
+
+  <div class="menu-icon" onclick="toggleMenu()" title="Меню">
+    <i class="fas fa-bars"></i>
+  </div>
+</header>
+  
+  <div class="burger-menu" id="burgerMenu">
+    <a href="javascript:void(0)" onclick="goToPage(0)">Главная</a>
+    <a href="javascript:void(0)" onclick="goToPage(1)">Глава 1</a>
+    <a href="javascript:void(0)" onclick="goToPage(2)">Глава 2</a>
+    <a href="javascript:void(0)" onclick="goToPage(3)">Глава 3</a>
+    <a href="javascript:void(0)" onclick="goToPage(4)">Глава 4</a>
+    <a href="javascript:void(0)" onclick="goToPage(5)">Глава 5</a>
+    <a href="javascript:void(0)" onclick="goToPage(6)">Глава 6</a>
+  </div>
+
+  <main class="main-cover" id="coverContent">
+    <div>
+      <div class="icon">✝️</div>
+      <h1 class="main-title">Название Книги</h1>
+      <h2 class="subtitle">Подзаголовок</h2>
+      <p class="author">Автор: Чернавский Евгений</p>
+      
+ <div class="share-section">
+  <h2 class="subtitle">Делитесь в социальных сетях, чтобы нести благую весть таким способом!</h2>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/sharer/sharer.php?u=YOUR_URL" target="_blank" class="social-icon" title="Поделиться на Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://twitter.com/intent/tweet?url=YOUR_URL" target="_blank" class="social-icon" title="Поделиться в Twitter">
+      <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://www.instagram.com/?url=YOUR_URL" target="_blank" class="social-icon" title="Поделиться в Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="https://www.threads.net/share?url=YOUR_URL" target="_blank" class="social-icon" title="Поделиться в Threads">
+      <i class="fab fa-threads"></i>
+    </a>
+    <a href="https://wa.me/?text=Прочитайте эту книгу "Свет Истины". Это невероятная история о любви, вере и просветлении. Поделитесь с друзьями и вдохновите их!" target="_blank" class="social-icon" title="Поделиться в WhatsApp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+    <a href="https://t.me/share/url?url=Прочитайте эту книгу 'Свет Истины'. Это невероятная история о любви, вере и просветлении. Поделитесь с друзьями и вдохновите их!" target="_blank" class="social-icon" title="Поделиться в Telegram">
+      <i class="fab fa-telegram-plane"></i>
+    </a>
+    <a href="viber://forward?text=Прочитайте эту книгу 'Свет Истины'. Это невероятная история о любви, вере и просветлении. Поделитесь с друзьями и вдохновите их!" target="_blank" class="social-icon" title="Поделиться в Viber">
+      <i class="fab fa-viber"></i>
+    </a>
+  </div>
+</div>
+
+      
+      <p class="swipe-arrow">Выберите язык и смахните вверх, чтобы начать читать</p>
+        <!-- Стандартный виджет Google Translate -->
+  <div id="google_translate_element"></div>
+      
+      
+      
+    </div>
+  </main>
+
+<!-- Модальное окно -->
+<div id="pwaInstructionsModal" class="modal">
+  <div class="modal-content">
+    <h2>Как скачать приложение, что бы читать Offline!</h2>
+    <p>Для установки приложения на ваш телефон или компьютер выполните следующие действия:</p>
+    <ul>
+      <li>На устройстве Android: Откройте меню браузера (обычно значок с тремя точками) и выберите "Добавить на главный экран".</li>
+      <li>На устройстве iOS: В браузере Safari нажмите на значок "Поделиться" (квадрат со стрелкой вверх) и выберите "На экран Домой".</li>
+      <li>На компьютере: В браузере Chrome или Edge нажмите на значок установки (значок "плюс" в адресной строке) или откройте меню и выберите "Установить приложение".</li>
+    </ul>
+    <button onclick="closePwaInstructions()" class="close-btn">Закрыть</button>
+  </div>
+</div>
+
+  <div id="pages">
+    <!-- Content dynamically added by JS -->
+  </div>
+
+  <footer class="fixed-footer">
+    <button title="Назад" onclick="goToPreviousPage()">
+      <i class="fas fa-arrow-left"></i>
+    </button>
+    <button title="Главнвя" onclick="goToContents()">
+      <i class="fas fa-book"></i>
+    </button>
+    <button title="Вперед" onclick="goToNextPage()">
+      <i class="fas fa-arrow-right"></i>
+    </button>
+<button title="Скачать Offline">
+  <i class="fas fa-download"></i>
+</button>
+    <button onclick="shareContent()" title="Поделиться">
+      <i class="fas fa-share-alt"></i>
+    </button>
+  </footer>
+  
+<script src="script.js"></script>
+  
+</body>
+</html>
