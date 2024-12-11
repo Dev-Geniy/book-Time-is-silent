@@ -1,12 +1,3 @@
-:root {
-      --header-bg-color: #f5f5f5;
-      --text-color: #333;
-      --light-theme-bg: #ffffff;
-      --dark-theme-bg: #2a2a2a;
-      --footer-bg-color: rgba(0, 0, 0, 0.5);
-      --link-hover-color: #3498db;
-    }
-
     body {
       margin: 0;
       padding: 0;
@@ -17,22 +8,66 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-    .header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 15px 20px;
-      background-color: var(--header-bg-color);
-      color: var(--text-color);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1;
-    }
+.book-title {
+  font-size: clamp(1.5rem, 5vw, 2rem);
+}
+
+/* Основной контейнер с прокруткой */
+.main-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  margin-top: 15px; /* Отступ сверху для хедера */
+  margin-bottom: 20px; /* Отступ снизу для футера */
+  padding: 20px; /* Отступы вокруг контента */
+  background-color: var(--light-theme-bg); /* Цвет фона */
+  color: var(--text-color); /* Цвет текста */
+}
+
+/* Шкала прогресса в хедере */
+/* Стиль прогресс-бара с плавным изменением прозрачности */
+.progress-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0; /* Начальная ширина 0 */
+  height: 5px; /* Высота прогресс-бара */
+  background-color: #A8D08D; /* Зеленый цвет прогресс-бара */
+  transition: opacity 0.5s ease; /* Плавное изменение прозрачности */
+  z-index: 10; /* Прогресс-бар поверх контента */
+}
+
+
+/* Скрытие бокового ползунка прокрутки, но сохранение возможности прокручивать */
+html, body {
+  overflow: scroll; /* Оставляем возможность прокрутки */
+}
+
+/* Для WebKit-браузеров (Chrome, Safari и др.) скрываем стандартный ползунок */
+::-webkit-scrollbar {
+  display: none; /* Скрываем ползунок */
+}
+
+/* Хедер с плавной сменой фона */
+.header {
+  background-color: #f5f5f5; /* Светлый серый цвет */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  color: black;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1; /* Хедер будет под прогресс-баром */
+  transition: background 0.3s ease; /* Плавный переход фона */
+}
+
+
+
 
     .book-title {
-      font-size: 1.5em;
+      font-size: 1.4em;
       text-align: center;
       margin: 0;
     }
@@ -105,7 +140,7 @@
 
     .burger-menu {
       display: none;
-      position: absolute;
+      position: fixed;
       top: 40px;
       right: 10px;
       background-color: #333;
@@ -197,23 +232,96 @@ ul li {
 }
 
 /* Делиться */
-        .share-section {
-      margin-top: 20px;
-    }
-    
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-    }
+.share-section {
+  margin-top: 20px;
+}
 
-    .social-icon {
-      font-size: 40px;
-      color: #2c3e50;
-      text-decoration: none;
-      transition: color 0.3s;
-    }
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
 
-    .social-icon:hover {
-      color: #3498db;
-    }
+.social-icon {
+  font-size: 40px;
+  color: #2c3e50;
+  text-decoration: none;
+  transition: color 0.3s, transform 0.3s; /* Добавим плавную трансформацию */
+}
+
+/* Эффект проблеска света */
+@keyframes lightBlink {
+  0%, 100% {
+    filter: brightness(1);
+  }
+  50% {
+    filter: brightness(1.5); /* Увеличиваем яркость */
+  }
+}
+
+.social-icon:hover {
+  color: #3498db;
+  animation: lightBlink 3s ease-in-out infinite; /* Проблеск будет срабатывать каждые 3 секунды */
+}
+
+/* Эффект пульсации (плавное увеличение иконки) */
+.social-icon.pulse {
+  animation: pulseEffect 1.5s infinite;
+}
+
+.social-icon:hover {
+  text-shadow: 0 0 10px #3498db, 0 0 20px #3498db, 0 0 30px #3498db;
+}
+
+
+@keyframes pulseEffect {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2); /* Увеличиваем иконку */
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Эффект тени */
+.social-icon:hover {
+  text-shadow: 0 0 15px rgba(52, 152, 219, 0.8); /* Тень вокруг иконки */
+  transform: scale(1.1); /* Легкое увеличение */
+}
+
+/* Плавная трансформация при наведении */
+.social-icon {
+  transition: transform 0.3s ease, color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.social-icon:hover {
+  color: #3498db;
+  transform: scale(1.1);
+}
+
+
+/* Стили для анимации пружины для темы */
+@keyframes spring {
+  0% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.2);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  70% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.spring-animation {
+  animation: spring 0.3s ease-in-out;
+}
