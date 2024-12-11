@@ -2,6 +2,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta property="og:title" content="Когда время молчит" />
+  <meta property="og:description" content="Роман о любви, вере и вечных ценностях..." />
+  <meta property="og:image" content="URL_к_обложке_или_лого.png" />
+  <meta property="og:url" content="https://dev-geniy.github.io/book-Time-is-silent/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <title>Когда время молчит</title>
   <link rel="icon" type="image/x-icon" href="https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480005BookmarkOpen.png">
 <!-- Ссылка на манифест -->
@@ -25,9 +30,13 @@
 </head>
 <body>
 <header class="header">
+  <!-- Прогресс-бар -->
+  <div class="progress-bar"></div>
+
   <div class="theme-language-wrapper">
-    <button class="theme-switcher" id="themeSwitcher" title="Переключить тему">
-      <i class="fas fa-moon"></i>
+    <!-- Кнопка переключения темы -->
+    <button id="themeSwitcher">
+      <i id="themeIcon" class="fa fa-moon"></i>
     </button>
     <button class="theme-switcher" href="javascript:void(0)" onclick="showPwaInstructions()">
       <i class="fas fa-info-circle"></i>
@@ -40,15 +49,31 @@
     <i class="fas fa-bars"></i>
   </div>
 </header>
-  
+
+
+  <div class="main-content">
+
   <div class="burger-menu" id="burgerMenu">
     <a href="javascript:void(0)" onclick="goToPage(0)">Главная</a>
-    <a href="javascript:void(0)" onclick="goToPage(1)">Глава 1</a>
-    <a href="javascript:void(0)" onclick="goToPage(2)">Глава 2</a>
-    <a href="javascript:void(0)" onclick="goToPage(3)">Глава 3</a>
-    <a href="javascript:void(0)" onclick="goToPage(4)">Глава 4</a>
-    <a href="javascript:void(0)" onclick="goToPage(5)">Глава 5</a>
-    <a href="javascript:void(0)" onclick="goToPage(6)">Глава 6</a>
+    <a href="javascript:void(0)" onclick="goToPage(1)">1. Свет в холодной осени</a>
+    <a href="javascript:void(0)" onclick="goToPage(2)">2. Первое прикосновение к судьбе</a>
+    <a href="javascript:void(0)" onclick="goToPage(3)">3. Женщина слушает историю</a>
+    <a href="javascript:void(0)" onclick="goToPage(4)">4. Старый дом, новая надежда</a>
+    <a href="javascript:void(0)" onclick="goToPage(5)">5. Тёмные тайны семьи</a>
+    <a href="javascript:void(0)" onclick="goToPage(6)">6. Сила молитвы</a>
+    <a href="javascript:void(0)" onclick="goToPage(7)">7. Искры доверия</a>
+    <a href="javascript:void(0)" onclick="goToPage(8)">8. Испытание веры</a>
+    <a href="javascript:void(0)" onclick="goToPage(9)">9. Первый шаг любви</a>
+    <a href="javascript:void(0)" onclick="goToPage(10)">10. Пауза в чтении</a>
+    <a href="javascript:void(0)" onclick="goToPage(11)">11. Воспоминания начинают возвращаться</a>
+    <a href="javascript:void(0)" onclick="goToPage(12)">12. Уроки прощения</a>
+    <a href="javascript:void(0)" onclick="goToPage(13)">13. Любовь среди руин</a>
+    <a href="javascript:void(0)" onclick="goToPage(14)">14. Непредвиденная угроза</a>
+    <a href="javascript:void(0)" onclick="goToPage(15)">15. Победа над страхами</a>
+    <a href="javascript:void(0)" onclick="goToPage(16)">16. Истина открывается</a>
+    <a href="javascript:void(0)" onclick="goToPage(17)">17. Вспоминание любви</a>
+    <a href="javascript:void(0)" onclick="goToPage(18)">18. Последняя молитва</a>
+
   </div>
 
 <main class="main-cover" id="coverContent">
@@ -95,20 +120,24 @@
 <!-- Модальное окно -->
 <div id="pwaInstructionsModal" class="modal">
   <div class="modal-content">
-    <h2>Как скачать приложение, что бы читать Offline!</h2>
+    <h2>Как скачать приложение, чтобы читать Offline!</h2>
     <p>Для установки приложения на ваш телефон или компьютер выполните следующие действия:</p>
     <ul>
       <li>На устройстве Android: Откройте меню браузера (обычно значок с тремя точками) и выберите "Добавить на главный экран".</li>
       <li>На устройстве iOS: В браузере Safari нажмите на значок "Поделиться" (квадрат со стрелкой вверх) и выберите "На экран Домой".</li>
       <li>На компьютере: В браузере Chrome или Edge нажмите на значок установки (значок "плюс" в адресной строке) или откройте меню и выберите "Установить приложение".</li>
+      <li>На некоторых устройствах запрещено настройками, и не все устройства поддержиают данную функцию".</li>
     </ul>
     <button onclick="closePwaInstructions()" class="close-btn">Закрыть</button>
   </div>
 </div>
 
+
+
   <div id="pages">
     <!-- Content dynamically added by JS -->
   </div>
+</div>
 
   <footer class="fixed-footer">
     <button title="Назад" onclick="goToPreviousPage()">
