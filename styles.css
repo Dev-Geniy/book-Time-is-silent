@@ -453,6 +453,7 @@
   padding: 20px;
   border-radius: 8px;
   text-align: center;
+  border: 2px solid #808080; /* Серый цвет рамки */
 }
 
 .stars {
@@ -485,10 +486,9 @@
 
 /* Для контента модального окна */
 .book-info {
-    background: #ffffff;
     padding: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -517,13 +517,12 @@
 }
 
 .book-details p {
-    color: #555;
     font-size: 1rem;
 }
 
 #author-books-title {
     text-align: center;
-    color: #333;
+    
     font-size: 1.8rem;
     margin-bottom: 20px;
 }
