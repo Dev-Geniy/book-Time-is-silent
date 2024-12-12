@@ -16,9 +16,9 @@
   <meta property="og:locale" content="ru_RU" />
   <meta property="og:site_name" content="Когда время молчит" />
   <meta property="og:image" content="MyFirstLove.png" />
-
   <title>Когда время молчит</title>
   <link rel="icon" type="image/x-icon" href="https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480005BookmarkOpen.png">
+  <link rel="canonical" href="https://dev-geniy.github.io/book-Time-is-silent/" />
 <!-- Ссылка на манифест -->
   <link rel="manifest" href="manifest.json">
 
@@ -37,6 +37,26 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
   <link rel="manifest" href="manifest.json">
   <link rel="stylesheet" href="styles.css">
+  
+  <!-- Микроразметка Schema.org -->
+  <script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Book",
+    "name": "Когда время молчит",
+    "author": {
+      "@type": "Person",
+      "name": "Евгений Чернавский"
+    },
+    "description": "Роман о любви, вере и вечных ценностях...",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Чернавский Евгений"
+    },
+    "image": "URL_к_обложке_или_лого.png",
+    "url": "https://dev-geniy.github.io/book-Time-is-silent/"
+  }
+  </script>
 </head>
 <body>
 <header class="header">
@@ -99,9 +119,10 @@
 <main class="main-cover" id="coverContent">
     <div>
         <h1 class="main-title">"Когда время молчит"</h1>
+        
+
         <h2 class="subtitle">Роман о любви, вере и вечных ценностях...</h2>
         <p class="author">Автор: Чернавский Евгений</p>
-        
         <div class="share-section">
             <h2 class="subtitle">Поделитесь этим произведением, чтобы вдохновить других на путь веры и любви!</h2>
             <p class="share-description">Эта книга — это не просто роман, это история о духовном пробуждении, о встрече с верой и силе любви. Разделите её с близкими и друзьями, чтобы все могли открыть для себя важность духовных ценностей.</p>
@@ -140,14 +161,61 @@
 <!-- Модальное окно -->
 <div id="pwaInstructionsModal" class="modal">
   <div class="modal-content">
-    <h2>Как скачать приложение, чтобы читать Offline!</h2>
-    <p>Для установки приложения на ваш телефон или компьютер выполните следующие действия:</p>
-    <ul>
-      <li>На устройстве Android: Откройте меню браузера (обычно значок с тремя точками) и выберите "Добавить на главный экран".</li>
-      <li>На устройстве iOS: В браузере Safari нажмите на значок "Поделиться" (квадрат со стрелкой вверх) и выберите "На экран Домой".</li>
-      <li>На компьютере: В браузере Chrome или Edge нажмите на значок установки (значок "плюс" в адресной строке) или откройте меню и выберите "Установить приложение".</li>
-      <li>На некоторых устройствах запрещено настройками, и не все устройства поддержиают данную функцию".</li>
-    </ul>
+    <h2 id="author-books-title">Информация об авторе и книгах</h2>
+
+    <!-- Блок информации об авторе -->
+    <div class="author-info">
+      <h3>Об авторе:</h3>
+    <div class="author-info-block">
+      <img src="Myfoto.jpg" alt="Фото автора книги" class="author-photo">
+       <div class="author-details">
+        <p><strong>Имя:</strong> Евгений Чернавский</p>
+        <p><strong>Возраст:</strong> 32 года (На момент выпуска книги)</p>
+        <p><strong>Церковь:</strong> "Дверь в небо"</p>
+       </div>
+     </div>
+      <h3><strong>Почему пишу христианскую литературу?</strong></h3>
+      <p>Желание поделиться Божьей любовью и вдохновением с другими, это своего рода моё служение, стараюсь таким образом нести благую весть людям.</p>
+    </div>
+
+    <!-- Первая книга -->
+    <div class="book-info">
+      <h3>Книга: "Когда время молчит"</h3>
+      <div class="book-details">
+        <img src="MyFirstLove.png" alt="Обложка книги" width="100">
+        <div>
+          <p>Эта книга рассказывает о важности любви в жизни каждого человека и том, как найти путь к Богу через неё и преодолеть все трудности, даже время и обстоятельства не имеют власти над нами если мы с Богом.</p>
+          <p><strong>Оцените книгу после прочтения:</strong></p>
+          <div class="rating">
+            <span class="star" data-value="1">★</span>
+            <span class="star" data-value="2">★</span>
+            <span class="star" data-value="3">★</span>
+            <span class="star" data-value="4">★</span>
+            <span class="star" data-value="5">★</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Вторая книга с таймером -->
+    <div class="book-info">
+      <h3>Скоро публикация новой книги!</h3>
+      <div class="book-details">
+        <img src="NewBookCover.png" alt="Обложка новой книги" width="100">
+        <div>
+          <p><strong>Важное событие:</strong></p>
+          <p>Выход новой книги состоится 22 января 2024 года в 10:00.</p>
+          <div id="countdown"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Инструкция для оффлайн чтения -->
+    <div class="offline-info">
+      <h3>Как читать книгу оффлайн?</h3>
+      <p>Вы можете читать книги оффлайн, нажав на значок <i class="fas fa-download"></i> на панели внизу экрана. (Не для всех устройств)</p>
+    </div>
+
     <button onclick="closePwaInstructions()" class="close-btn">Закрыть</button>
   </div>
 </div>
@@ -159,6 +227,12 @@
       <!-- Контент динамически добавляется сюда через JS -->
     </div>
   </main>
+
+<section id="rating">
+  <h2>Оценка книги</h2>
+  <div class="stars">★★★★★</div>
+  <p>Средний рейтинг: <strong>4.8 из 5</strong> (более 100 отзывов)</p>
+</section>
 
   <footer class="fixed-footer">
     <button title="Назад" onclick="goToPreviousPage()">
@@ -177,8 +251,7 @@
       <i class="fas fa-share-alt"></i>
     </button>
   </footer>
-  
-<script src="script.js"></script>
-  
+    
+<script src="script.js" defer></script>  
 </body>
 </html>
