@@ -268,21 +268,70 @@ window.addEventListener('scroll', updateHeaderBackground);
 // Чтобы прогресс-бар был виден сразу при загрузке страницы, вызываем функцию один раз при загрузке
 updateHeaderBackground();
 
-
-// Отслеживаем событие прокрутки
-window.addEventListener('scroll', updateHeaderBackground);
-
 // Инициализация при загрузке страницы
 window.addEventListener('load', function() {
   // Поставим начальное состояние прогресс-бара
   updateHeaderBackground();
 });
 
-// Скрытие ползунка при прокрутке
-window.addEventListener('scroll', function() {
-  if (window.scrollY > 0) {
-    document.body.style.overflow = 'hidden'; // Скрыть ползунок
-  } else {
-    document.body.style.overflow = 'auto'; // Показать ползунок
+
+// СКРЫТИЕ =================================
+// Получаем элементы
+const headerFooterToggle = document.getElementById('headerFooterToggle');
+const pageEyeToggle = document.getElementById('pageEyeToggle');
+const header = document.querySelector('.header');
+const footer = document.querySelector('.fixed-footer');
+const headerFooterIcon = document.getElementById('headerFooterIcon');
+const pageEyeIcon = document.getElementById('pageEyeIcon');
+
+// Флаг для отслеживания состояния видимости
+let isHeaderFooterVisible = true;
+
+// Скрыть хедер и футер
+headerFooterToggle.addEventListener('click', () => {
+  if (isHeaderFooterVisible) {
+    // Скрытие хедера с анимацией скольжения вверх
+    header.style.transition = 'transform 0.5s ease';
+    header.style.transform = 'translateY(-100%)';
+    
+    // Скрытие футера с анимацией скольжения вниз
+    footer.style.transition = 'transform 0.5s ease';
+    footer.style.transform = 'translateY(100%)';
+    
+    // Меняем иконку на зачеркнутую в хедере
+    headerFooterIcon.classList.remove('fa-eye');
+    headerFooterIcon.classList.add('fa-eye-slash');
+    
+    // Показываем глазик для возвращения хедера и футера
+    pageEyeToggle.style.display = 'block';
+    
+    isHeaderFooterVisible = false;
   }
+});
+
+// Показать хедер и футер при клике на глазик на странице
+pageEyeToggle.addEventListener('click', () => {
+  if (!isHeaderFooterVisible) {
+    // Показ хедера с анимацией
+    header.style.transition = 'transform 0.5s ease';
+    header.style.transform = 'translateY(0)';
+    
+    // Показ футера с анимацией
+    footer.style.transition = 'transform 0.5s ease';
+    footer.style.transform = 'translateY(0)';
+    
+    // Меняем иконку обратно на обычный глазик
+    headerFooterIcon.classList.remove('fa-eye-slash');
+    headerFooterIcon.classList.add('fa-eye');
+    
+    // Прячем глазик для возврата
+    pageEyeToggle.style.display = 'none';
+    
+    isHeaderFooterVisible = true;
+  }
+});
+
+// Скрываем глазик на странице при загрузке
+window.addEventListener('load', () => {
+  pageEyeToggle.style.display = 'none';
 });
