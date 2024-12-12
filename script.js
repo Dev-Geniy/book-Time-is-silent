@@ -163,7 +163,7 @@
     // Инициализация страниц
     document.addEventListener('DOMContentLoaded', renderPages);
     
-    // Модальное окно инфо о скачивании
+    // Модальное окно
     function showPwaInstructions() {
   document.getElementById('pwaInstructionsModal').style.display = 'block';
 }
@@ -171,6 +171,52 @@
 function closePwaInstructions() {
   document.getElementById('pwaInstructionsModal').style.display = 'none';
 }
+
+// Таймер обратного отсчёта
+function updateCountdown() {
+  const eventDate = new Date('2024-12-22T10:00:00');
+  const now = new Date();
+  const diff = eventDate - now;
+
+  if (diff <= 0) {
+    document.getElementById('countdown').innerText = 'До выхода книги осталось 0 дней!';
+    return;
+  }
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+  document.getElementById('countdown').innerText = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+}
+setInterval(updateCountdown, 1000);
+updateCountdown();
+
+// Обработчик оценки книг
+const stars = document.querySelectorAll('.rating .star');
+stars.forEach(star => {
+  star.addEventListener('mouseenter', () => {
+    const value = star.dataset.value;
+    stars.forEach(s => {
+      if (s.dataset.value <= value) s.classList.add('hover');
+      else s.classList.remove('hover');
+    });
+  });
+
+  star.addEventListener('mouseleave', () => {
+    stars.forEach(s => s.classList.remove('hover'));
+  });
+
+  star.addEventListener('click', () => {
+    const value = star.dataset.value;
+    stars.forEach(s => {
+      if (s.dataset.value <= value) s.classList.add('selected');
+      else s.classList.remove('selected');
+    });
+    alert(`Вы поставили оценку: ${value}`);
+  });
+});
 
     // Регистрация Сервер Воркер
     if ('serviceWorker' in navigator) {
@@ -274,8 +320,7 @@ window.addEventListener('load', function() {
   updateHeaderBackground();
 });
 
-
-// СКРЫТИЕ =================================
+// СКРЫТИЕ ===
 // Получаем элементы
 const headerFooterToggle = document.getElementById('headerFooterToggle');
 const pageEyeToggle = document.getElementById('pageEyeToggle');
@@ -334,4 +379,13 @@ pageEyeToggle.addEventListener('click', () => {
 // Скрываем глазик на странице при загрузке
 window.addEventListener('load', () => {
   pageEyeToggle.style.display = 'none';
+});
+
+// Скрытие ползунка при прокрутке
+window.addEventListener('scroll', function() {
+  if (window.scrollY > 0) {
+    document.body.style.overflow = 'hidden'; // Скрыть ползунок
+  } else {
+    document.body.style.overflow = 'auto'; // Показать ползунок
+  }
 });
