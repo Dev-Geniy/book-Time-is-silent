@@ -449,11 +449,22 @@
 
 /* Оценки книги */
 #rating {
-  background-color: var(--light-theme-bg); /* Цвет фона */
   padding: 20px;
   border-radius: 8px;
   text-align: center;
   border: 2px solid #808080; /* Серый цвет рамки */
+}
+
+/* Звезды по умолчанию */
+.rating .star {
+  font-size: 30px; /* Размер звезды */
+  color: white; /* Белый цвет для звезд по умолчанию */
+  cursor: pointer;
+}
+
+/* При наведении на звезду */
+.rating .star.hover {
+  color: gold; /* Цвет для активной звезды при наведении */
 }
 
 .stars {
@@ -487,6 +498,7 @@
 /* Для контента модального окна */
 .book-info {
     padding: 20px;
+    background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.8);
     display: flex;
