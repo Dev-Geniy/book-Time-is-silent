@@ -7,6 +7,16 @@
   <meta property="og:image" content="URL_к_обложке_или_лого.png" />
   <meta property="og:url" content="https://dev-geniy.github.io/book-Time-is-silent/" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="description" content="Когда время молчит - роман о любви, вере и вечных ценностях. Прочитайте вдохновляющую историю на нашем сайте." />
+  <meta name="keywords" content="книга, роман, любовь, вера, духовное пробуждение, вечные ценности, онлайн книга" />
+  <meta name="author" content="Евгений Чернавский" />
+  <meta name="robots" content="index, follow" />
+  <meta name="language" content="ru" />
+  <meta property="og:type" content="book" />
+  <meta property="og:locale" content="ru_RU" />
+  <meta property="og:site_name" content="Когда время молчит" />
+  <meta property="og:image" content="MyFirstLove.png" />
+
   <title>Когда время молчит</title>
   <link rel="icon" type="image/x-icon" href="https://s1.iconbird.com/ico/2013/6/281/w256h25613715677480005BookmarkOpen.png">
 <!-- Ссылка на манифест -->
@@ -34,15 +44,21 @@
   <div class="progress-bar"></div>
 
   <div class="theme-language-wrapper">
+    <!-- Кнопка глазика для скрытия хедера и футера -->
+    <button id="headerFooterToggle" title="Скрыть хедер и футер">
+      <i id="headerFooterIcon" class="fas fa-eye"></i>
+    </button>
+
     <!-- Кнопка переключения темы -->
     <button id="themeSwitcher">
       <i id="themeIcon" class="fa fa-moon"></i>
     </button>
+
     <button class="theme-switcher" href="javascript:void(0)" onclick="showPwaInstructions()">
       <i class="fas fa-info-circle"></i>
     </button>
   </div>
-  
+
   <h1 class="book-title">Когда время молчит</h1>
 
   <div class="menu-icon" onclick="toggleMenu()" title="Меню">
@@ -50,6 +66,10 @@
   </div>
 </header>
 
+<!-- Кнопка глазика для возврата хедера и футера -->
+<button id="pageEyeToggle" title="Показать хедер и футер">
+  <i id="pageEyeIcon" class="fas fa-eye-slash"></i>
+</button>
 
   <div class="main-content">
 
@@ -134,10 +154,11 @@
 
 
 
-  <div id="pages">
-    <!-- Content dynamically added by JS -->
-  </div>
-</div>
+  <main class="content">
+    <div id="pages" class="pages">
+      <!-- Контент динамически добавляется сюда через JS -->
+    </div>
+  </main>
 
   <footer class="fixed-footer">
     <button title="Назад" onclick="goToPreviousPage()">
