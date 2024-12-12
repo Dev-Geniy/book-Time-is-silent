@@ -37,7 +37,7 @@
 
 /* Хедер с плавной сменой фона */
 .header {
-  height: 60px; /* Задайте желаемую высоту для хедера */
+  height: 20px; /* Задайте желаемую высоту для хедера */
   background-color: #f5f5f5; /* Светлый серый цвет */
   display: flex;
   justify-content: space-between;
