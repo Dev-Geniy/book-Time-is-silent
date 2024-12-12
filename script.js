@@ -389,3 +389,4 @@ window.addEventListener('scroll', function() {
     document.body.style.overflow = 'auto'; // Показать ползунок
   }
 });
+
