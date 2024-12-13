@@ -18,11 +18,6 @@
       transition: background-color 0.3s ease, color 0.3s ease;
     }
 
-
-    .book-title {
-       font-size: clamp(1.5rem, 5vw, 2rem);
-    }
-
     /* Основной контейнер с прокруткой */
     .main-content {
        flex-grow: 1;
@@ -64,7 +59,7 @@
     }
 
     .book-title {
-      font-size: 1.4em;
+      font-size: 1.3em;
       text-align: center;
       margin: 0;
     }
