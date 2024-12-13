@@ -188,7 +188,7 @@ function updateCountdown() {
   const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
   const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-  document.getElementById('countdown').innerText = `${days}д ${hours}ч ${minutes}м ${seconds}с`;
+  document.getElementById('countdown').innerText = `Осталось: ${days}д ${hours}ч ${minutes}м ${seconds}с`;
 }
 setInterval(updateCountdown, 1000);
 updateCountdown();
@@ -214,7 +214,7 @@ stars.forEach(star => {
       if (s.dataset.value <= value) s.classList.add('selected');
       else s.classList.remove('selected');
     });
-    alert(`Вы поставили оценку: ${value}`);
+    alert(`Спасибо за Вашу оценку! Вы поставили оценку: ${value}`);
   });
 });
 
@@ -389,4 +389,86 @@ window.addEventListener('scroll', function() {
     document.body.style.overflow = 'auto'; // Показать ползунок
   }
 });
+
+// ЛИСТАНИЕ СЕНСОРОМ
+
+let startX = 0; // Начальная позиция по оси X при касании
+let startY = 0; // Начальная позиция по оси Y при касании
+let isAnimating = false; // Флаг для предотвращения многократного перелистывания
+
+// Функция для обработки свайпов
+function handleTouchStart(event) {
+  // Сохраняем начальные координаты касания
+  startX = event.touches[0].clientX;
+  startY = event.touches[0].clientY;
+}
+
+function handleTouchMove(event) {
+  // Проверяем, насколько сильно сдвинулся пользователь по осям X и Y
+  const diffX = event.touches[0].clientX - startX;
+  const diffY = event.touches[0].clientY - startY;
+
+  // Разрешаем только горизонтальный свайп, если вертикальный сдвиг мал
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    event.preventDefault(); // Останавливаем стандартное поведение (скроллинг по вертикали)
+
+    if (isAnimating) return; // Если анимация уже идет, не выполняем свайп
+
+    if (diffX > 50) {
+      // Свайп влево (перелистывание назад)
+      goToPreviousPage();
+    } else if (diffX < -50) {
+      // Свайп вправо (перелистывание вперед)
+      goToNextPage();
+    }
+  }
+}
+
+function handleTouchEnd() {
+  // Сбрасываем начальные координаты после завершения касания
+  startX = 0;
+  startY = 0;
+}
+
+// Функция перехода на следующую страницу
+function goToPage(pageIndex) {
+  if (isAnimating) return; // Если анимация идет, блокируем переход
+
+  // Блокируем дальнейшие переходы до завершения анимации
+  isAnimating = true;
+
+  // Снимаем класс с текущей активной страницы
+  document.querySelector('.page.active').classList.remove('active');
+  currentPage = pageIndex;
+  // Добавляем класс активной странице
+  document.querySelectorAll('.page')[currentPage].classList.add('active');
+
+  // Показ/скрытие coverContent
+  document.getElementById('coverContent').style.display = pageIndex === 0 ? 'flex' : 'none';
+
+  // Завершаем анимацию и разрешаем следующий свайп через небольшой таймаут
+  setTimeout(() => {
+    isAnimating = false;
+  }, 300); // Задержка в 300 мс для завершения анимации
+
+  toggleMenu(false);
+}
+
+// Функции для перехода на предыдущую/следующую страницу
+function goToPreviousPage() {
+  if (currentPage > 0) {
+    goToPage(currentPage - 1);
+  }
+}
+
+function goToNextPage() {
+  if (currentPage < pages.length - 1) {
+    goToPage(currentPage + 1);
+  }
+}
+
+// Добавляем обработчики событий
+document.addEventListener('touchstart', handleTouchStart);
+document.addEventListener('touchmove', handleTouchMove, { passive: false });
+document.addEventListener('touchend', handleTouchEnd);
 
