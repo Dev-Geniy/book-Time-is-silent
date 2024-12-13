@@ -1,15 +1,15 @@
 {
-  "short_name": "Книга",
-  "name": "Название Книги",
+  "short_name": "Book",
+  "name": "When time is silent",
   "icons": [
     {
       "src": "icon-192x192.png",
-      "type": "image/png",
+      "type": "image.png",
       "sizes": "192x192"
     },
     {
       "src": "icon-512x512.png",
-      "type": "image/png",
+      "type": "image2.png",
       "sizes": "512x512"
     }
   ],
