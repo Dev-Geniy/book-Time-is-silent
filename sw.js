@@ -2,13 +2,12 @@ const CACHE_NAME = 'offline-cache-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/style.css', // если есть CSS
-  '/script.js', // если есть JS
-  '/icon-192x192.png', // ваш логотип
+  '/styles.css',
+  '/script.js',
+  '/icon-192x192.png',
   '/icon-512x512.png'
 ];
 
-// Установка Service Worker и кэширование файлов
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -17,7 +16,6 @@ self.addEventListener('install', (event) => {
   );
 });
 
-// Обслуживание запросов из кэша
 self.addEventListener('fetch', (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
@@ -26,7 +24,6 @@ self.addEventListener('fetch', (event) => {
   );
 });
 
-// Удаление старого кэша при обновлении
 self.addEventListener('activate', (event) => {
   const cacheWhitelist = [CACHE_NAME];
   event.waitUntil(
